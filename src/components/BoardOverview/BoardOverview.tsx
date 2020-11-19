@@ -1,35 +1,37 @@
 import React, {useEffect, useState} from 'react';
 import {Board} from "../../App/App.models";
-import {fetchBoard} from "../../App/App.gateways";
 import {BoardC} from "../Board/Board";
+import styled from "styled-components";
+import {fetchBoard} from "../../App/App.gateways";
 
-export interface BoardOverviewProps {
-    boardIds: String[]
-}
 export const initialBoards: Board[] = [];
 
-export function BoardOverview({boardIds}: BoardOverviewProps) {
+export interface BoardOverviewProps {
+    userId: String
+}
+
+const StyledOverview = styled.div`
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+`
+
+export function BoardOverview({userId}: BoardOverviewProps) {
     const [boards, setBoards] = useState(initialBoards);
 
-    function myFunction(boardId: String) {
-        fetchBoard(boardId).then((response) => {
-            let copyBoards = Object.assign([], boards);
-            if (response.board) {
-                copyBoards.push(response.board)
-            }
-            setBoards(copyBoards)
-        })
-    }
-
     useEffect(() => {
-        boardIds.forEach(myFunction)
-    })
+        fetchBoard(userId).then((response) => {
+            console.log("fetching boards for user " + userId)
+            if (response.boards) {
+                setBoards([...response.boards])
+            }
+        })
+    }, [userId])
 
     return (
-        <React.Fragment>
+        <StyledOverview>
             Boards:
-            {boards.map(board => <BoardC board={board}/>)}
-
-        </React.Fragment>
+            {boards.map(board => <BoardC key={board.id} board={board}/>)}
+        </StyledOverview>
     );
 }
