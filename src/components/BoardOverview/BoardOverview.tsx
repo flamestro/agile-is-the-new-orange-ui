@@ -18,15 +18,16 @@ const StyledOverview = styled.div`
 
 export function BoardOverview({userId}: BoardOverviewProps) {
     const [boards, setBoards] = useState(initialBoards);
+    const [reloadSwitch, toggleSwitch] = useState(false)
 
     useEffect(() => {
         fetchBoard(userId).then((response) => {
-            console.log("fetching boards for user " + userId)
             if (response.boards) {
                 setBoards([...response.boards])
             }
         })
-    }, [userId])
+        setTimeout(() => {  toggleSwitch(!reloadSwitch) }, 1000); // re-trigger effect every second
+    }, [userId, reloadSwitch])
 
     return (
         <StyledOverview>

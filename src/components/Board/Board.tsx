@@ -23,7 +23,7 @@ export const BoardC = ({board}: BoardProps) => {
                 </StyledBoard>)
                 :
                 (<StyledBoard>
-                    <button>add a lane to this board</button>
+                    <button >add a lane to this board</button>
                 </StyledBoard>)
             }
         </div>
