@@ -1,9 +1,9 @@
 import {Board} from "../../App/App.models";
 import React, {useState} from "react";
-import {LaneC, StyledAddButton} from "../Lane/Lane";
+import {LaneC} from "../Lane/Lane";
 import styled from "styled-components";
-import {createLane} from "../../App/App.gateways";
-import {Modal} from "../Modal";
+import {Modal} from "../Modal/Modal";
+import {LaneModalData} from "../Lane/LaneModal";
 
 export interface BoardProps {
     board: Board
@@ -14,34 +14,6 @@ const StyledBoard = styled.div`
     display: flex;
     flex-direction: row;
 `
-
-export interface LaneModalProps {
-    boardId: String,
-    toggleModal: () => void,
-}
-
-function LaneModalData({boardId, toggleModal}: LaneModalProps) {
-    const [laneName, setLaneName] = useState("");
-
-    const onChange = (e: React.FormEvent<HTMLInputElement>) => {
-        setLaneName(e.currentTarget.value);
-    }
-
-    return (
-        <React.Fragment>
-            <form>
-                <label>
-                    Name:
-                    <input type="text" name="name" value={laneName} onChange={onChange}/>
-                </label>
-            </form>
-            <StyledAddButton onClick={() => {
-                createLane(boardId, laneName);
-                toggleModal();
-            }}> + </StyledAddButton>
-        </React.Fragment>
-    )
-}
 
 export const BoardC = ({board}: BoardProps) => {
 

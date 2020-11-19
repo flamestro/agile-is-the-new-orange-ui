@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React, {useState} from "react";
-import {StyledAddButton} from "./Lane/Lane";
 import ReactDOM from "react-dom";
+import {StyledAddButton} from "../StyledAddButton/StyledAddButton";
 
 export interface ModalProps {
     toggleModal: () => void,
