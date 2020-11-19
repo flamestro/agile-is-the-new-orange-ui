@@ -14,8 +14,8 @@ export const fetchBoard = async (userId: String) => {
         );
 }
 
-export const createBoard = async (name: String) => {
-    return await fetch("http://localhost:8080/board?name=" + name, {
+export const createBoard = async (userId: String, name: String) => {
+    return await fetch("http://localhost:8080/board?name=" + name + "&userId=" + userId, {
         method: "POST",
         headers: {
             "Content-Type": "application/json; charset=utf-8",
@@ -28,8 +28,8 @@ export const createBoard = async (name: String) => {
         );
 }
 
-export const createLane = async (boardId: String) => {
-    return await fetch("http://localhost:8080/board/" + boardId + "/lane", {
+export const createLane = async (boardId: String, laneName: String) => {
+    return await fetch("http://localhost:8080/board/" + boardId + "/lane?name=" + laneName, {
         method: "POST",
         headers: {
             "Content-Type": "application/json; charset=utf-8",
@@ -42,8 +42,8 @@ export const createLane = async (boardId: String) => {
         );
 }
 
-export const createCard = async (boardId: String, laneId: String) => {
-    return await fetch("http://localhost:8080/board/" + boardId + "/lane/" + laneId + "/card/", {
+export const createCard = async (boardId: String, laneId: String, cardName: String) => {
+    return await fetch("http://localhost:8080/board/" + boardId + "/lane/" + laneId + "/card?name=" + cardName, {
         method: "POST",
         headers: {
             "Content-Type": "application/json; charset=utf-8",

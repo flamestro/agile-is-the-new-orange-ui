@@ -1,6 +1,9 @@
 import {Card} from "../../App/App.models";
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
+import {Modal} from "../Modal";
+import {StyledAddButton} from "../Lane/Lane";
+import {createCard, createLane} from "../../App/App.gateways";
 
 export interface CardProps {
     card: Card;
