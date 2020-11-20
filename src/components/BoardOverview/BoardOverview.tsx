@@ -6,6 +6,7 @@ import {fetchBoard} from "../../App/App.gateways";
 import {Modal} from "../Modal/Modal";
 import {StyledAddButton} from "../StyledAddButton/StyledAddButton";
 import {BoardData} from "./BoardModal";
+import {StyledHeadline} from "../StyledHeadline/StyledHeadline";
 
 export const initialBoards: Board[] = [];
 
@@ -13,14 +14,15 @@ export interface BoardOverviewProps {
     userId: String
 }
 
-
-
 const StyledOverview = styled.div`
 position: relative;
-    border: 2px solid black;
     display: flex;
     flex-direction: column;
     min-height: 150px;
+`
+export const BoardButtonWrapper = styled.span`
+    display: flex;
+    justify-content: center;
 `
 
 export function BoardOverview({userId}: BoardOverviewProps) {
@@ -43,11 +45,13 @@ export function BoardOverview({userId}: BoardOverviewProps) {
         <StyledOverview>
             <Modal childComp={<BoardData toggleModal={() => toggleModal(!modalTriggered)} userId={userId}/>}
                    modalTriggered={modalTriggered} toggleModal={() => toggleModal(!modalTriggered)}/>
-            Boards:
+            <StyledHeadline>Boards of {userId}</StyledHeadline>
             {boards.map(board => <BoardC key={board.id} board={board}/>)}
-            <StyledAddButton onClick={() => {
-                toggleModal(!modalTriggered)
-            }}> + Board </StyledAddButton>
+            <BoardButtonWrapper>
+                <StyledAddButton onClick={() => { toggleModal(!modalTriggered)}}>
+                    + Board
+                </StyledAddButton>
+            </BoardButtonWrapper>
         </StyledOverview>
     );
 }

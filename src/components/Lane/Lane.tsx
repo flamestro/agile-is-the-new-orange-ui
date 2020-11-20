@@ -5,6 +5,8 @@ import styled from "styled-components";
 import {Modal} from "../Modal/Modal";
 import {CardDataModal} from "../Card/CardModal";
 import {StyledAddButton} from "../StyledAddButton/StyledAddButton";
+import {orange_2} from "../Colors/Colors";
+import {StyledHeadline} from "../StyledHeadline/StyledHeadline";
 
 
 export interface LaneProps {
@@ -15,6 +17,8 @@ export interface LaneProps {
 const StyledLane = styled.div`
     border: 1px solid black;
     padding: 10px;
+    margin: 10px;
+    background-color: ${orange_2};
 `
 
 export function LaneC({boardId, lane}: LaneProps) {
@@ -22,7 +26,7 @@ export function LaneC({boardId, lane}: LaneProps) {
 
     return (
         <StyledLane>
-            Lane: {lane.name}
+            <StyledHeadline>Lane: {lane.name}</StyledHeadline>
             <Modal childComp={<CardDataModal toggleModal={() => toggleModal(!modalTriggered)} boardId={boardId}
                                              laneId={lane.id}/>}
                    modalTriggered={modalTriggered} toggleModal={() => toggleModal(!modalTriggered)}/>
@@ -32,7 +36,7 @@ export function LaneC({boardId, lane}: LaneProps) {
                 ))}
                 <StyledAddButton onClick={() => {
                     toggleModal(!modalTriggered)
-                }}> + </StyledAddButton>
+                }}> + Card</StyledAddButton>
             </div>
         </StyledLane>
     );

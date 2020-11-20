@@ -1,15 +1,17 @@
 import React from 'react';
 import {createGlobalStyle} from 'styled-components';
 import {BoardOverview} from "../components/BoardOverview/BoardOverview";
+import {white} from "../components/Colors/Colors";
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background-color: orange;
+    background-color:  ${white};
+    font-family: Roboto, serif;
   }
 `
 
 function App() {
-    const userId = "someUse5"
+    const userId = "newest"
 
     return (
         <React.Fragment>

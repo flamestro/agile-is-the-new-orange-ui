@@ -5,5 +5,6 @@ export const StyledAddButton = styled.div`
     height: 20px;
     display: flex;
     justify-content: center;
-    border: 3px solid grey;
+    border-radius: 10px;
+    border: 3px solid darkblue;
 `

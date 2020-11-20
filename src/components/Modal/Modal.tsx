@@ -2,6 +2,7 @@ import styled from "styled-components";
 import React, {useState} from "react";
 import ReactDOM from "react-dom";
 import {StyledAddButton} from "../StyledAddButton/StyledAddButton";
+import {white} from "../Colors/Colors";
 
 export interface ModalProps {
     toggleModal: () => void,
@@ -22,7 +23,7 @@ const WrapperModal = styled.div`
     justify-content: center;
     width: 100%;
     z-index: 1;
-    background: white;
+    background-color: ${white};
 `;
 
 export const Modal = ({modalTriggered, toggleModal, childComp}: ModalProps) => {
