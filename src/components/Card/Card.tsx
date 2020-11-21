@@ -7,7 +7,7 @@ export interface CardProps {
 }
 
 const StyledCard = styled.div`
-    border: 1px solid black;
+    border-bottom: 1px solid black;
     padding: 10px;
 `
 
