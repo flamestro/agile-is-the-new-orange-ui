@@ -1,4 +1,12 @@
-# Getting Started with Create React App
+# Agile Is The New Orange
+
+This project is based on React ft. TypeScript.
+
+It is a Kanban board application.
+You can create boards, lanes, and cards with this application.
+However, you need a running [back-end](https://github.com/flamestro/AgileIsTheNewOrange) to do so.
+
+This is still work in progress, still, the main functionalities already work (C, R, and D of CRUD).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
