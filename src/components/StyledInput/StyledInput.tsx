@@ -44,7 +44,7 @@ export function StyledInput({containedText, onChange, placeholderText, formName}
 
         <StyledFieldSet>
             <InputWithText placeholder={placeholderText} type="text" name={formName} value={containedText}
-                           onChange={onChange}/>
+                           onChange={onChange} onKeyDown={(event) => {if (event.keyCode === 13) {event.preventDefault(); return false;}}}/>
             {containedText !== "" ? (<StyledInputLabel form={formName}>{placeholderText}</StyledInputLabel>) : null}
         </StyledFieldSet>
     )
