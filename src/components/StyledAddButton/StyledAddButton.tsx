@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {black, grey_2} from "../Colors/Colors";
 
 export const StyledAddButton = styled.div`
     width: 100px;
@@ -6,5 +7,12 @@ export const StyledAddButton = styled.div`
     display: flex;
     justify-content: center;
     border-radius: 10px;
-    border: 3px solid darkblue;
+    color: ${black};
+    border: 2px solid ${black};
+    user-select: none;
+    margin: 10px;
+    &:hover{
+      background-color: ${grey_2};
+      cursor: pointer;
+    }
 `
