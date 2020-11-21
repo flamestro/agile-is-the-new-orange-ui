@@ -10,8 +10,14 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
+export const HideGlobalScrollbar = createGlobalStyle`
+  body {
+    overflow: hidden;
+  }
+`
+
 function App() {
-    const userId = "newest"
+    const userId = "someUsertest"
 
     return (
         <React.Fragment>
