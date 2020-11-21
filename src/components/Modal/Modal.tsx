@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import React, {useState} from "react";
 import ReactDOM from "react-dom";
-import {StyledAddButton} from "../StyledAddButton/StyledAddButton";
 import {white} from "../Colors/Colors";
+import {HideGlobalScrollbar} from "../../App/App";
 
 export interface ModalProps {
     toggleModal: () => void,
@@ -10,10 +10,14 @@ export interface ModalProps {
     childComp: React.ReactNode;
 }
 
+export interface WrapperModalProps {
+    scroll: number,
+}
+
 const WrapperModal = styled.div`
     position: absolute;
-    top:0;
-    bottom: 0;
+    top: ${(props: WrapperModalProps) => props.scroll + "px"};
+    bottom: -${(props: WrapperModalProps) => props.scroll + "px"};
     left: 0;
     right: 0;
     opacity: 0.9;
@@ -21,27 +25,22 @@ const WrapperModal = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    height: 100%;
     z-index: 1;
     background-color: ${white};
 `;
 
-export const Modal = ({modalTriggered, toggleModal, childComp}: ModalProps) => {
-    const [triggered, toggleTriggered] = useState(modalTriggered)
-
+export const Modal = ({modalTriggered, childComp}: ModalProps) => {
     return (
         <React.Fragment>
             {
                 modalTriggered ?
                     ReactDOM.createPortal(
                         <React.StrictMode>
-                            <WrapperModal>
+                            <WrapperModal scroll={window.scrollY}>
                                 {childComp}
-                                <StyledAddButton onClick={() => {
-                                    toggleModal();
-                                    toggleTriggered(!triggered);
-                                }}> Close</StyledAddButton>
                             </WrapperModal>
+                            <HideGlobalScrollbar/>
                         </React.StrictMode>,
                         // @ts-ignore
                         document.getElementById('modal-root')

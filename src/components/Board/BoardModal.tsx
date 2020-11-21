@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {StyledAddButton} from "../StyledAddButton/StyledAddButton";
 import {createBoard} from "../../App/App.gateways";
+import {StyledInput} from "../StyledInput/StyledInput";
 
 export interface BoardModalProps {
     userId: String
@@ -17,14 +18,16 @@ export function BoardData({userId, toggleModal}: BoardModalProps) {
         <React.Fragment>
             <form>
                 <label>
-                    Name:
-                    <input type="text" name="name" value={boardName} onChange={onChange}/>
+                    <StyledInput containedText={boardName} onChange={onChange} placeholderText={"Board Name"} formName={"BoardName"}/>
                 </label>
             </form>
             <StyledAddButton onClick={() => {
                 createBoard(userId, boardName);
                 toggleModal();
             }}> + </StyledAddButton>
+            <StyledAddButton onClick={() => {
+                toggleModal();
+            }}> Close</StyledAddButton>
         </React.Fragment>
     )
 }
