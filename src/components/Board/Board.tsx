@@ -53,7 +53,7 @@ export const BoardC = ({board}: BoardProps) => {
     return (
         <BoardWrapper>
             <StyledHeadline onMouseEnter={toggleIsHovering} onMouseLeave={toggleIsHovering}>
-                Board: {board.name}
+                {board.name}
                 {isHovering ?
                     <StyledDeleteButton onClick={() => {deleteBoard(board.id)}}>
                         X

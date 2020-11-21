@@ -39,7 +39,7 @@ export function LaneC({boardId, lane}: LaneProps) {
     return (
         <StyledLane>
             <StyledHeadline onMouseEnter={toggleIsHovering} onMouseLeave={toggleIsHovering}>
-                Lane: {lane.name}
+                {lane.name}
                 {isHovering ?
                     <StyledDeleteButton onClick={() => {deleteLane(boardId, lane.id)}}>
                         X
