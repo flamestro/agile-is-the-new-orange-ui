@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, {useState} from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import {white} from "../Colors/Colors";
 import {HideGlobalScrollbar} from "../../App/App";

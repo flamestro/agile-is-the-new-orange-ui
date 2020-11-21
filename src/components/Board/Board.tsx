@@ -6,9 +6,9 @@ import {Modal} from "../Modal/Modal";
 import {LaneModalData} from "../Lane/LaneModal";
 import {StyledButton} from "../StyledAddButton/StyledButton";
 import {StyledHeadline} from "../StyledHeadline/StyledHeadline";
-import {grey_1, orange_1, white} from "../Colors/Colors";
+import {grey_1, orange_1} from "../Colors/Colors";
 import {StyledDeleteButton} from "../StyledDeleteButton/StyledDeleteButton";
-import {deleteBoard, deleteLane} from "../../App/App.gateways";
+import {deleteBoard} from "../../App/App.gateways";
 
 export interface BoardProps {
     board: Board

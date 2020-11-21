@@ -8,7 +8,7 @@ import {StyledButton} from "../StyledAddButton/StyledButton";
 import {orange_2} from "../Colors/Colors";
 import {StyledHeadline} from "../StyledHeadline/StyledHeadline";
 import {StyledDeleteButton} from "../StyledDeleteButton/StyledDeleteButton";
-import {deleteCard, deleteLane} from "../../App/App.gateways";
+import {deleteLane} from "../../App/App.gateways";
 
 export interface LaneProps {
     lane: Lane;

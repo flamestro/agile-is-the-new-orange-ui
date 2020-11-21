@@ -1,4 +1,4 @@
-import {Board, BoardResponse, CardResponse, Lane, LaneResponse} from "./App.models";
+import {BoardResponse, CardResponse, LaneResponse} from "./App.models";
 
 export const fetchBoard = async (userId: String) => {
     return await fetch("http://localhost:8080/board?userId=" + userId, {
