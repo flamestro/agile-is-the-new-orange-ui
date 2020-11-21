@@ -6,7 +6,7 @@ import {Modal} from "../Modal/Modal";
 import {LaneModalData} from "../Lane/LaneModal";
 import {StyledAddButton} from "../StyledAddButton/StyledAddButton";
 import {StyledHeadline} from "../StyledHeadline/StyledHeadline";
-import {grey, orange_1, white} from "../Colors/Colors";
+import {grey_1, orange_1, white} from "../Colors/Colors";
 
 export interface BoardProps {
     board: Board
@@ -14,12 +14,14 @@ export interface BoardProps {
 
 const StyledBoard = styled.div`
     border: 2px solid black;    
-    border-radius: 10px;
+    border-radius: 10px 10px 0 0;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    background-color: ${grey};
+    justify-content: left;
+    background-color: ${grey_1};
     min-height: 100px;
+    overflow: auto;
+    padding: 0 10px 0 10px;
 `
 
 const BoardWrapper = styled.div`
@@ -52,7 +54,9 @@ export const BoardC = ({board}: BoardProps) => {
                     <LaneC key={lane.id} boardId={board.id} lane={lane}/>
                 ))}
                 <StyledButtonWrapper>
-                    <StyledAddButton onClick={() => { toggleModal(!modalTriggered) }}>
+                    <StyledAddButton onClick={() => {
+                        toggleModal(!modalTriggered)
+                    }}>
                         + Lane
                     </StyledAddButton>
                 </StyledButtonWrapper>
