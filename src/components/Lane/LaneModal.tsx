@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {StyledButton} from "../StyledAddButton/StyledButton";
+import {StyledButton} from "../StyledButton/StyledButton";
 import {createLane} from "../../App/App.gateways";
 import {StyledInput} from "../StyledInput/StyledInput";
 

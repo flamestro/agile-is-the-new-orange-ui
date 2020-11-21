@@ -4,11 +4,12 @@ import {CardC} from "../Card/Card";
 import styled from "styled-components";
 import {Modal} from "../Modal/Modal";
 import {CardDataModal} from "../Card/CardModal";
-import {StyledButton} from "../StyledAddButton/StyledButton";
+import {StyledButton} from "../StyledButton/StyledButton";
 import {orange_2} from "../Colors/Colors";
 import {StyledHeadline} from "../StyledHeadline/StyledHeadline";
 import {StyledDeleteButton} from "../StyledDeleteButton/StyledDeleteButton";
 import {deleteLane} from "../../App/App.gateways";
+import {AreYouSureModal} from "../AreYouSureModal/AreYouSureModal";
 
 export interface LaneProps {
     lane: Lane;
@@ -32,8 +33,13 @@ const StyledButtonWrapper = styled.div`
 export function LaneC({boardId, lane}: LaneProps) {
     const [modalTriggered, toggleModal] = useState(false);
     const [isHovering, setHovered] = useState(false);
+    const [deleteModalActive, setDeleteModal] = useState(false)
+
     const toggleIsHovering = () => {
         setHovered(!isHovering)
+    }
+    const toggleDeleteModal = () => {
+        setDeleteModal(!deleteModalActive)
     }
 
     return (
@@ -41,15 +47,12 @@ export function LaneC({boardId, lane}: LaneProps) {
             <StyledHeadline onMouseEnter={toggleIsHovering} onMouseLeave={toggleIsHovering}>
                 {lane.name}
                 {isHovering ?
-                    <StyledDeleteButton onClick={() => {deleteLane(boardId, lane.id)}}>
+                    <StyledDeleteButton onClick={() => toggleDeleteModal()}>
                         X
                     </StyledDeleteButton>
                     :
                     null}
             </StyledHeadline>
-            <Modal childComp={<CardDataModal toggleModal={() => toggleModal(!modalTriggered)} boardId={boardId}
-                                             laneId={lane.id}/>}
-                   modalTriggered={modalTriggered} toggleModal={() => toggleModal(!modalTriggered)}/>
             <div>
                 {lane.cards.map(card => (
                     <CardC key={card.id} boardId={boardId} laneId={lane.id} card={card}/>
@@ -60,6 +63,16 @@ export function LaneC({boardId, lane}: LaneProps) {
                     }}> + Card</StyledButton>
                 </StyledButtonWrapper>
             </div>
+            <Modal childComp={<CardDataModal toggleModal={() => toggleModal(!modalTriggered)}
+                                             boardId={boardId}
+                                             laneId={lane.id}/>}
+                   modalTriggered={modalTriggered}
+                   toggleModal={() => toggleModal(!modalTriggered)}/>
+            <Modal toggleModal={() => {toggleDeleteModal()}}
+                   modalTriggered={deleteModalActive}
+                   childComp={
+                       <AreYouSureModal toggleModal={() => {toggleDeleteModal()}}
+                                        onAgree={() => {deleteLane(boardId, lane.id)}}/>}/>
         </StyledLane>
     );
 }

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {createCard} from "../../App/App.gateways";
-import {StyledButton} from "../StyledAddButton/StyledButton";
+import {StyledButton} from "../StyledButton/StyledButton";
 import {StyledInput} from "../StyledInput/StyledInput";
 
 export interface CardModalProps {

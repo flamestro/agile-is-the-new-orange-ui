@@ -4,11 +4,12 @@ import {LaneC} from "../Lane/Lane";
 import styled from "styled-components";
 import {Modal} from "../Modal/Modal";
 import {LaneModalData} from "../Lane/LaneModal";
-import {StyledButton} from "../StyledAddButton/StyledButton";
+import {StyledButton} from "../StyledButton/StyledButton";
 import {StyledHeadline} from "../StyledHeadline/StyledHeadline";
 import {grey_1, orange_1} from "../Colors/Colors";
 import {StyledDeleteButton} from "../StyledDeleteButton/StyledDeleteButton";
-import {deleteBoard} from "../../App/App.gateways";
+import {deleteBoard, deleteLane} from "../../App/App.gateways";
+import {AreYouSureModal} from "../AreYouSureModal/AreYouSureModal";
 
 export interface BoardProps {
     board: Board
@@ -43,19 +44,23 @@ const StyledButtonWrapper = styled.div`
 `
 
 export const BoardC = ({board}: BoardProps) => {
-
+    const [deleteModalActive, setDeleteModal] = useState(false)
     const [modalTriggered, toggleModal] = useState(false);
     const [isHovering, setHovered] = useState(false);
     const toggleIsHovering = () => {
         setHovered(!isHovering)
     }
+    const toggleDeleteModal = () => {
+        setDeleteModal(!deleteModalActive)
+    }
+
 
     return (
         <BoardWrapper>
             <StyledHeadline onMouseEnter={toggleIsHovering} onMouseLeave={toggleIsHovering}>
                 {board.name}
                 {isHovering ?
-                    <StyledDeleteButton onClick={() => {deleteBoard(board.id)}}>
+                    <StyledDeleteButton onClick={() => {toggleDeleteModal()}}>
                         X
                     </StyledDeleteButton>
                     :
@@ -75,7 +80,11 @@ export const BoardC = ({board}: BoardProps) => {
                     </StyledButton>
                 </StyledButtonWrapper>
             </StyledBoard>
-
+            <Modal toggleModal={() => {toggleDeleteModal()}}
+                   modalTriggered={deleteModalActive}
+                   childComp={
+                       <AreYouSureModal toggleModal={() => {toggleDeleteModal()}}
+                                        onAgree={() => {deleteBoard(board.id)}}/>}/>
         </BoardWrapper>
     );
 }

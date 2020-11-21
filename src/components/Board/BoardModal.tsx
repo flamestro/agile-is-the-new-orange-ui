@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {StyledButton} from "../StyledAddButton/StyledButton";
+import {StyledButton} from "../StyledButton/StyledButton";
 import {createBoard} from "../../App/App.gateways";
 import {StyledInput} from "../StyledInput/StyledInput";
 
@@ -8,10 +8,10 @@ export interface BoardModalProps {
     toggleModal: () => void,
 }
 export function BoardData({userId, toggleModal}: BoardModalProps) {
-    const [boardName, setBoardname] = useState("");
+    const [boardName, setBoardName] = useState("");
 
     const onChange = (e: React.FormEvent<HTMLInputElement>) => {
-        setBoardname(e.currentTarget.value);
+        setBoardName(e.currentTarget.value);
     }
 
     return (

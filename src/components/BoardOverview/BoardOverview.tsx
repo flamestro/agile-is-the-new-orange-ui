@@ -4,7 +4,7 @@ import {BoardC} from "../Board/Board";
 import styled from "styled-components";
 import {fetchBoard} from "../../App/App.gateways";
 import {Modal} from "../Modal/Modal";
-import {StyledButton} from "../StyledAddButton/StyledButton";
+import {StyledButton} from "../StyledButton/StyledButton";
 import {BoardData} from "../Board/BoardModal";
 import {StyledHeadline} from "../StyledHeadline/StyledHeadline";
 
