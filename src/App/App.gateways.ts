@@ -55,3 +55,17 @@ export const createCard = async (boardId: String, laneId: String, cardName: Stri
             }
         );
 }
+
+export const deleteCard = async (boardId: String, laneId: String, cardId: String) => {
+    return await fetch("http://localhost:8080/board/" + boardId + "/lane/" + laneId + "/card/" + cardId, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",
+        }
+    }).then(res => res.json())
+        .then(
+            (result: CardResponse) => {
+                return result;
+            }
+        );
+}

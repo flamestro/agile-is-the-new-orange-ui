@@ -1,9 +1,12 @@
 import {Card} from "../../App/App.models";
 import React, {useState} from "react";
 import styled from "styled-components";
+import {deleteCard} from "../../App/App.gateways";
 
 export interface CardProps {
     card: Card;
+    boardId: String;
+    laneId: String;
 }
 
 const StyledCard = styled.div`
@@ -30,7 +33,7 @@ const StyledDeleteButton = styled.div`
     }
 `
 
-export function CardC({card}: CardProps) {
+export function CardC({card, boardId, laneId}: CardProps) {
     const [isHovering, setHovered] = useState(false);
     const toggleIsHovering = () => {
         setHovered(!isHovering)
@@ -40,7 +43,12 @@ export function CardC({card}: CardProps) {
         <React.Fragment>
             <StyledCard key={card.id} onMouseEnter={toggleIsHovering} onMouseLeave={toggleIsHovering}>
                 <span>{card.name}</span>
-                {isHovering ? <StyledDeleteButton>X</StyledDeleteButton>: null}
+                {isHovering ?
+                    <StyledDeleteButton onClick={() => {deleteCard(boardId, laneId, card.id)}}>
+                        X
+                    </StyledDeleteButton>
+                    :
+                    null}
             </StyledCard>
         </React.Fragment>
     );

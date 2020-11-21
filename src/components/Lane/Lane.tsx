@@ -38,7 +38,7 @@ export function LaneC({boardId, lane}: LaneProps) {
                    modalTriggered={modalTriggered} toggleModal={() => toggleModal(!modalTriggered)}/>
             <div>
                 {lane.cards.map(card => (
-                    <CardC key={card.id} card={card}/>
+                    <CardC key={card.id} boardId={boardId} laneId={lane.id} card={card}/>
                 ))}
                 <StyledButtonWrapper>
                     <StyledButton onClick={() => {
