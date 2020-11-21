@@ -5,7 +5,7 @@ import styled from "styled-components";
 import {fetchBoard} from "../../App/App.gateways";
 import {Modal} from "../Modal/Modal";
 import {StyledAddButton} from "../StyledAddButton/StyledAddButton";
-import {BoardData} from "./BoardModal";
+import {BoardData} from "../Board/BoardModal";
 import {StyledHeadline} from "../StyledHeadline/StyledHeadline";
 
 export const initialBoards: Board[] = [];
