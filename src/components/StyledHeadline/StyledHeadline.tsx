@@ -5,4 +5,5 @@ export const StyledHeadline = styled.span`
     justify-content: center;
     font-size: 18px;
     font-weight: bold;
+    margin-bottom: 10px;
 `
