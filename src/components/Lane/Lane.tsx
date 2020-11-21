@@ -8,7 +8,6 @@ import {StyledAddButton} from "../StyledAddButton/StyledAddButton";
 import {orange_2} from "../Colors/Colors";
 import {StyledHeadline} from "../StyledHeadline/StyledHeadline";
 
-
 export interface LaneProps {
     lane: Lane;
     boardId: String;
@@ -16,9 +15,16 @@ export interface LaneProps {
 
 const StyledLane = styled.div`
     border: 1px solid black;
+    border-radius: 10px;
     padding: 10px;
     margin: 10px;
     background-color: ${orange_2};
+`
+
+const StyledButtonWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 `
 
 export function LaneC({boardId, lane}: LaneProps) {
@@ -34,9 +40,11 @@ export function LaneC({boardId, lane}: LaneProps) {
                 {lane.cards.map(card => (
                     <CardC key={card.id} card={card}/>
                 ))}
-                <StyledAddButton onClick={() => {
-                    toggleModal(!modalTriggered)
-                }}> + Card</StyledAddButton>
+                <StyledButtonWrapper>
+                    <StyledAddButton onClick={() => {
+                        toggleModal(!modalTriggered)
+                    }}> + Card</StyledAddButton>
+                </StyledButtonWrapper>
             </div>
         </StyledLane>
     );
