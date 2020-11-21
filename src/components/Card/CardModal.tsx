@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {createCard} from "../../App/App.gateways";
-import {StyledAddButton} from "../StyledAddButton/StyledAddButton";
+import {StyledButton} from "../StyledAddButton/StyledButton";
 import {StyledInput} from "../StyledInput/StyledInput";
 
 export interface CardModalProps {
@@ -21,17 +21,17 @@ export function CardDataModal({boardId, toggleModal,laneId}: CardModalProps) {
             <form>
                 <StyledInput containedText={cardName} onChange={onChange} placeholderText={"Card Name"} formName={"CardName"}/>
             </form>
-            <StyledAddButton onClick={() => {
+            <StyledButton onClick={() => {
                 if(cardName !== ""){
                     createCard(boardId, laneId, cardName);
                     toggleModal();
                 } else {
                   alert("enter a name")
                 }
-            }}> + </StyledAddButton>
-            <StyledAddButton onClick={() => {
+            }}> + </StyledButton>
+            <StyledButton onClick={() => {
                 toggleModal();
-            }}> Close</StyledAddButton>
+            }}> Close</StyledButton>
         </React.Fragment>
     )
 }

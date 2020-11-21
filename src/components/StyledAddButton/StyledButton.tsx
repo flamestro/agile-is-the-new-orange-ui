@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {black, grey_2} from "../Colors/Colors";
 
-export const StyledAddButton = styled.div`
+export const StyledButton = styled.div`
     width: 100px;
     height: 20px;
     display: flex;

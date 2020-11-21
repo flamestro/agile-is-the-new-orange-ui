@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {StyledAddButton} from "../StyledAddButton/StyledAddButton";
+import {StyledButton} from "../StyledAddButton/StyledButton";
 import {createBoard} from "../../App/App.gateways";
 import {StyledInput} from "../StyledInput/StyledInput";
 
@@ -21,13 +21,13 @@ export function BoardData({userId, toggleModal}: BoardModalProps) {
                     <StyledInput containedText={boardName} onChange={onChange} placeholderText={"Board Name"} formName={"BoardName"}/>
                 </label>
             </form>
-            <StyledAddButton onClick={() => {
+            <StyledButton onClick={() => {
                 createBoard(userId, boardName);
                 toggleModal();
-            }}> + </StyledAddButton>
-            <StyledAddButton onClick={() => {
+            }}> + </StyledButton>
+            <StyledButton onClick={() => {
                 toggleModal();
-            }}> Close</StyledAddButton>
+            }}> Close</StyledButton>
         </React.Fragment>
     )
 }

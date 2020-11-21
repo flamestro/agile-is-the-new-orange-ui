@@ -4,7 +4,7 @@ import {BoardC} from "../Board/Board";
 import styled from "styled-components";
 import {fetchBoard} from "../../App/App.gateways";
 import {Modal} from "../Modal/Modal";
-import {StyledAddButton} from "../StyledAddButton/StyledAddButton";
+import {StyledButton} from "../StyledAddButton/StyledButton";
 import {BoardData} from "../Board/BoardModal";
 import {StyledHeadline} from "../StyledHeadline/StyledHeadline";
 
@@ -48,9 +48,9 @@ export function BoardOverview({userId}: BoardOverviewProps) {
             <StyledHeadline>Boards of {userId}</StyledHeadline>
             {boards.map(board => <BoardC key={board.id} board={board}/>)}
             <BoardButtonWrapper>
-                <StyledAddButton onClick={() => { toggleModal(!modalTriggered)}}>
+                <StyledButton onClick={() => { toggleModal(!modalTriggered)}}>
                     + Board
-                </StyledAddButton>
+                </StyledButton>
             </BoardButtonWrapper>
         </StyledOverview>
     );

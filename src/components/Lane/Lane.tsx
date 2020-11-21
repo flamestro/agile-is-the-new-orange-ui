@@ -4,7 +4,7 @@ import {CardC} from "../Card/Card";
 import styled from "styled-components";
 import {Modal} from "../Modal/Modal";
 import {CardDataModal} from "../Card/CardModal";
-import {StyledAddButton} from "../StyledAddButton/StyledAddButton";
+import {StyledButton} from "../StyledAddButton/StyledButton";
 import {orange_2} from "../Colors/Colors";
 import {StyledHeadline} from "../StyledHeadline/StyledHeadline";
 
@@ -41,9 +41,9 @@ export function LaneC({boardId, lane}: LaneProps) {
                     <CardC key={card.id} card={card}/>
                 ))}
                 <StyledButtonWrapper>
-                    <StyledAddButton onClick={() => {
+                    <StyledButton onClick={() => {
                         toggleModal(!modalTriggered)
-                    }}> + Card</StyledAddButton>
+                    }}> + Card</StyledButton>
                 </StyledButtonWrapper>
             </div>
         </StyledLane>

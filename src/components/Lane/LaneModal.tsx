@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {StyledAddButton} from "../StyledAddButton/StyledAddButton";
+import {StyledButton} from "../StyledAddButton/StyledButton";
 import {createLane} from "../../App/App.gateways";
 import {StyledInput} from "../StyledInput/StyledInput";
 
@@ -20,13 +20,13 @@ export function LaneModalData({boardId, toggleModal}: LaneModalProps) {
             <form>
                 <StyledInput containedText={laneName} onChange={onChange} placeholderText={"Lane Name"} formName={"LaneName"}/>
             </form>
-            <StyledAddButton onClick={() => {
+            <StyledButton onClick={() => {
                 createLane(boardId, laneName);
                 toggleModal();
-            }}> + </StyledAddButton>
-            <StyledAddButton onClick={() => {
+            }}> + </StyledButton>
+            <StyledButton onClick={() => {
                 toggleModal();
-            }}> Close</StyledAddButton>
+            }}> Close</StyledButton>
         </React.Fragment>
     )
 }
