@@ -38,7 +38,7 @@ export function BoardOverview({userId}: BoardOverviewProps) {
         })
         setTimeout(() => {
             toggleSwitch(!reloadSwitch)
-        }, 250); // re-trigger effect every second
+        }, 100); // re-trigger effect every second
     }, [userId, reloadSwitch])
 
     return (
