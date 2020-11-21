@@ -1,4 +1,4 @@
-import {BoardResponse, CardResponse, LaneResponse} from "./App.models";
+import {Board, BoardResponse, CardResponse, Lane, LaneResponse} from "./App.models";
 
 export const fetchBoard = async (userId: String) => {
     return await fetch("http://localhost:8080/board?userId=" + userId, {
@@ -51,6 +51,34 @@ export const createCard = async (boardId: String, laneId: String, cardName: Stri
     }).then(res => res.json())
         .then(
             (result: CardResponse) => {
+                return result;
+            }
+        );
+}
+
+export const deleteBoard = async (boardId: String) => {
+    return await fetch("http://localhost:8080/board/" + boardId, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",
+        }
+    }).then(res => res.json())
+        .then(
+            (result: BoardResponse) => {
+                return result;
+            }
+        );
+}
+
+export const deleteLane = async (boardId: String, laneId: String) => {
+    return await fetch("http://localhost:8080/board/" + boardId + "/lane/" + laneId, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",
+        }
+    }).then(res => res.json())
+        .then(
+            (result: LaneResponse) => {
                 return result;
             }
         );

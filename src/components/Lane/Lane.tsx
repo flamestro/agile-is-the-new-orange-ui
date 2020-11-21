@@ -7,6 +7,8 @@ import {CardDataModal} from "../Card/CardModal";
 import {StyledButton} from "../StyledAddButton/StyledButton";
 import {orange_2} from "../Colors/Colors";
 import {StyledHeadline} from "../StyledHeadline/StyledHeadline";
+import {StyledDeleteButton} from "../StyledDeleteButton/StyledDeleteButton";
+import {deleteCard, deleteLane} from "../../App/App.gateways";
 
 export interface LaneProps {
     lane: Lane;
@@ -29,10 +31,22 @@ const StyledButtonWrapper = styled.div`
 
 export function LaneC({boardId, lane}: LaneProps) {
     const [modalTriggered, toggleModal] = useState(false);
+    const [isHovering, setHovered] = useState(false);
+    const toggleIsHovering = () => {
+        setHovered(!isHovering)
+    }
 
     return (
         <StyledLane>
-            <StyledHeadline>Lane: {lane.name}</StyledHeadline>
+            <StyledHeadline onMouseEnter={toggleIsHovering} onMouseLeave={toggleIsHovering}>
+                Lane: {lane.name}
+                {isHovering ?
+                    <StyledDeleteButton onClick={() => {deleteLane(boardId, lane.id)}}>
+                        X
+                    </StyledDeleteButton>
+                    :
+                    null}
+            </StyledHeadline>
             <Modal childComp={<CardDataModal toggleModal={() => toggleModal(!modalTriggered)} boardId={boardId}
                                              laneId={lane.id}/>}
                    modalTriggered={modalTriggered} toggleModal={() => toggleModal(!modalTriggered)}/>

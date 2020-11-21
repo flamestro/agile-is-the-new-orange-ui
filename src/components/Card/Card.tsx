@@ -2,6 +2,7 @@ import {Card} from "../../App/App.models";
 import React, {useState} from "react";
 import styled from "styled-components";
 import {deleteCard} from "../../App/App.gateways";
+import {StyledDeleteButton} from "../StyledDeleteButton/StyledDeleteButton";
 
 export interface CardProps {
     card: Card;
@@ -17,21 +18,6 @@ const StyledCard = styled.div`
     justify-content: space-between;
 `
 
-const StyledDeleteButton = styled.div`
-    font-weight: bold;    
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    margin-left: 10px;
-    border: 2px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    user-select: none;
-    &:hover{
-      cursor: pointer;
-    }
-`
 
 export function CardC({card, boardId, laneId}: CardProps) {
     const [isHovering, setHovered] = useState(false);
