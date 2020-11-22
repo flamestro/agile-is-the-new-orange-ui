@@ -5,6 +5,7 @@ import {deleteCard} from "../../App/App.gateways";
 import {StyledDeleteButton} from "../StyledDeleteButton/StyledDeleteButton";
 import {Modal} from "../Modal/Modal";
 import {AreYouSureModal} from "../AreYouSureModal/AreYouSureModal";
+import {orange_1} from "../Colors/Colors";
 
 export interface CardProps {
     card: Card;
@@ -13,9 +14,14 @@ export interface CardProps {
 }
 
 const StyledCard = styled.div`
+    border-radius: 26px;
+    background: ${orange_1};
+    box-shadow:  -5px -5px 10px #cf922d, 
+                 5px 5px 10px #ffd643;
     max-width: 100%;
-    border-bottom: 1px solid black;
     padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 15px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -26,15 +32,13 @@ const StyledCard = styled.div`
 export function CardC({card, boardId, laneId}: CardProps) {
     const [isHovering, setHovered] = useState(false);
     const [deleteModalActive, setDeleteModal] = useState(false)
-    const toggleIsHovering = () => {
-        setHovered(!isHovering)
-    }
+
     const toggleDeleteModal = () => {
         setDeleteModal(!deleteModalActive)
     }
 
     return (
-        <StyledCard key={card.id} onMouseEnter={toggleIsHovering} onMouseLeave={toggleIsHovering}>
+        <StyledCard key={card.id} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
             <span>{card.name}</span>
             {isHovering ?
                 <StyledDeleteButton onClick={() => {
@@ -44,9 +48,7 @@ export function CardC({card, boardId, laneId}: CardProps) {
                 </StyledDeleteButton>
                 :
                 null}
-            <Modal toggleModal={() => {
-                toggleDeleteModal()
-            }} modalTriggered={deleteModalActive} childComp={<AreYouSureModal toggleModal={() => {
+            <Modal modalTriggered={deleteModalActive} childComp={<AreYouSureModal toggleModal={() => {
                 toggleDeleteModal()
             }} onAgree={() => deleteCard(boardId, laneId, card.id)}/>}/>
         </StyledCard>

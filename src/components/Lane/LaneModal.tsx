@@ -21,8 +21,10 @@ export function LaneModalData({boardId, toggleModal}: LaneModalProps) {
                 <StyledInput containedText={laneName} onChange={onChange} placeholderText={"Lane Name"} formName={"LaneName"}/>
             </form>
             <StyledButton onClick={() => {
-                createLane(boardId, laneName);
-                toggleModal();
+                createLane(boardId, laneName).then(res =>
+                {if(res.status === "INVALID_NAME"){
+                    alert("This lane name is invalid, try again")
+                } else {toggleModal();}});
             }}> + </StyledButton>
             <StyledButton onClick={() => {
                 toggleModal();

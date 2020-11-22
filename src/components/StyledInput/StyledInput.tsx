@@ -1,27 +1,33 @@
 import styled from "styled-components";
-import {grey_4} from "../Colors/Colors";
+import {grey_4, orange_1} from "../Colors/Colors";
 import React from "react";
 
 const InputWithText = styled.input`
      position: relative;
-     border-radius: 5px;
      height: 32px;
      font-weight: bold;
      text-align: center; 
-
+    border-radius: 26px;
+    border: 0 solid ${orange_1};
+    background: ${orange_1};
+    box-shadow:  -6px -6px 12px #cf922d, 
+             6px 6px 12px #ffd643;
 `
 
 const StyledFieldSet = styled.fieldset`
       border:none;
       position:relative;
       max-height: 32px;
+
+
 `
 
 const StyledInputLabel = styled.fieldset`
+     color: ${grey_4};
      position: absolute;
      border: none;
-     top: 5px;
-     left: 5px;
+     top: 3px;
+     left: 15px;
      right: 0;
      z-index: 1;
      pointer-events: none;
@@ -29,7 +35,7 @@ const StyledInputLabel = styled.fieldset`
      font-weight: bold;
      text-align: left; 
      font-size: 12px;
-     color: ${grey_4};
+     border-radius: 26px;
 `
 
 export interface InputProps {

@@ -22,8 +22,11 @@ export function BoardData({userId, toggleModal}: BoardModalProps) {
                 </label>
             </form>
             <StyledButton onClick={() => {
-                createBoard(userId, boardName);
-                toggleModal();
+                createBoard(userId, boardName).then(res =>
+                {if(res.status === "INVALID_NAME"){
+                    alert("This board name is invalid, try again")
+                } else {toggleModal();}});
+
             }}> + </StyledButton>
             <StyledButton onClick={() => {
                 toggleModal();

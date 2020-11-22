@@ -9,7 +9,7 @@ export interface CardModalProps {
     toggleModal: () => void,
 }
 
-export function CardDataModal({boardId, toggleModal,laneId}: CardModalProps) {
+export function CardDataModal({boardId, toggleModal, laneId}: CardModalProps) {
     const [cardName, setCardName] = useState("");
 
     const onChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -19,15 +19,17 @@ export function CardDataModal({boardId, toggleModal,laneId}: CardModalProps) {
     return (
         <React.Fragment>
             <form>
-                <StyledInput containedText={cardName} onChange={onChange} placeholderText={"Card Name"} formName={"CardName"}/>
+                <StyledInput containedText={cardName} onChange={onChange} placeholderText={"Card Name"}
+                             formName={"CardName"}/>
             </form>
             <StyledButton onClick={() => {
-                if(cardName !== ""){
-                    createCard(boardId, laneId, cardName);
-                    toggleModal();
-                } else {
-                  alert("enter a name")
-                }
+                createCard(boardId, laneId, cardName).then(res => {
+                    if (res.status === "INVALID_NAME") {
+                        alert("This card name is invalid, try again")
+                    } else {
+                        toggleModal();
+                    }
+                });
             }}> + </StyledButton>
             <StyledButton onClick={() => {
                 toggleModal();

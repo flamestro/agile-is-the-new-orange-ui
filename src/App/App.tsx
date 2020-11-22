@@ -1,11 +1,11 @@
 import React from 'react';
 import {createGlobalStyle} from 'styled-components';
 import {BoardOverview} from "../components/BoardOverview/BoardOverview";
-import {white} from "../components/Colors/Colors";
+import {orange_1} from "../components/Colors/Colors";
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background-color:  ${white};
+    background-color:  ${orange_1};
     font-family: Roboto, serif;
   }
 `
@@ -17,7 +17,7 @@ export const HideGlobalScrollbar = createGlobalStyle`
 `
 
 function App() {
-    const userId = "someUsertest"
+    const userId = "someUser"
 
     return (
         <React.Fragment>

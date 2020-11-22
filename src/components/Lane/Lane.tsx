@@ -5,7 +5,7 @@ import styled from "styled-components";
 import {Modal} from "../Modal/Modal";
 import {CardDataModal} from "../Card/CardModal";
 import {StyledButton} from "../StyledButton/StyledButton";
-import {orange_2} from "../Colors/Colors";
+import {orange_1, orange_2} from "../Colors/Colors";
 import {StyledHeadline} from "../StyledHeadline/StyledHeadline";
 import {StyledDeleteButton} from "../StyledDeleteButton/StyledDeleteButton";
 import {deleteLane} from "../../App/App.gateways";
@@ -17,11 +17,12 @@ export interface LaneProps {
 }
 
 const StyledLane = styled.div`
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px;
-    background-color: ${orange_2};
+    
+    border-radius: 26px;
+    box-shadow:  -5px -5px 10px #cf922d, 
+             5px 5px 10px #ffd643;    padding: 20px;
+    margin: 20px;
+    background-color: ${orange_1};
 `
 
 const StyledButtonWrapper = styled.div`
@@ -35,16 +36,13 @@ export function LaneC({boardId, lane}: LaneProps) {
     const [isHovering, setHovered] = useState(false);
     const [deleteModalActive, setDeleteModal] = useState(false)
 
-    const toggleIsHovering = () => {
-        setHovered(!isHovering)
-    }
     const toggleDeleteModal = () => {
         setDeleteModal(!deleteModalActive)
     }
 
     return (
         <StyledLane>
-            <StyledHeadline onMouseEnter={toggleIsHovering} onMouseLeave={toggleIsHovering}>
+            <StyledHeadline onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
                 {lane.name}
                 {isHovering ?
                     <StyledDeleteButton onClick={() => toggleDeleteModal()}>
@@ -66,10 +64,8 @@ export function LaneC({boardId, lane}: LaneProps) {
             <Modal childComp={<CardDataModal toggleModal={() => toggleModal(!modalTriggered)}
                                              boardId={boardId}
                                              laneId={lane.id}/>}
-                   modalTriggered={modalTriggered}
-                   toggleModal={() => toggleModal(!modalTriggered)}/>
-            <Modal toggleModal={() => {toggleDeleteModal()}}
-                   modalTriggered={deleteModalActive}
+                   modalTriggered={modalTriggered} />
+            <Modal modalTriggered={deleteModalActive}
                    childComp={
                        <AreYouSureModal toggleModal={() => {toggleDeleteModal()}}
                                         onAgree={() => {deleteLane(boardId, lane.id)}}/>}/>

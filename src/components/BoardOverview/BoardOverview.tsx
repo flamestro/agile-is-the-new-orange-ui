@@ -44,7 +44,7 @@ export function BoardOverview({userId}: BoardOverviewProps) {
     return (
         <StyledOverview>
             <Modal childComp={<BoardData toggleModal={() => toggleModal(!modalTriggered)} userId={userId}/>}
-                   modalTriggered={modalTriggered} toggleModal={() => toggleModal(!modalTriggered)}/>
+                   modalTriggered={modalTriggered} />
             <StyledHeadline>Boards of {userId}</StyledHeadline>
             {boards.map(board => <BoardC key={board.id} board={board}/>)}
             <BoardButtonWrapper>
