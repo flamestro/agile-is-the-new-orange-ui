@@ -4,7 +4,7 @@ import { Board } from "../../App/App.models";
 import { BoardC } from "../Board/Board";
 import { fetchBoard } from "../../App/App.gateways";
 import { Modal } from "../Modal/Modal";
-import { StyledButton } from "../StyledButton/StyledButton";
+import StyledButton from "../StyledButton/StyledButton";
 import { BoardData } from "../Board/BoardModal";
 import StyledHeadline from "../StyledHeadline/StyledHeadline";
 
@@ -25,7 +25,7 @@ export const BoardButtonWrapper = styled.span`
   justify-content: center;
 `;
 
-export function BoardOverview({ userId }: BoardOverviewProps) {
+export const BoardOverview = ({ userId }: BoardOverviewProps) => {
   const [boards, setBoards] = useState(initialBoards);
   const [modalTriggered, toggleModal] = useState(false);
   const [reloadSwitch, toggleSwitch] = useState(false);
@@ -70,4 +70,4 @@ export function BoardOverview({ userId }: BoardOverviewProps) {
       </BoardButtonWrapper>
     </StyledOverview>
   );
-}
+};

@@ -4,7 +4,7 @@ import { Lane } from "../../App/App.models";
 import { CardC } from "../Card/Card";
 import { Modal } from "../Modal/Modal";
 import { CardDataModal } from "../Card/CardModal";
-import { StyledButton } from "../StyledButton/StyledButton";
+import StyledButton from "../StyledButton/StyledButton";
 import { orange1 } from "../Colors/Colors";
 import StyledHeadline from "../StyledHeadline/StyledHeadline";
 import StyledDeleteButton from "../StyledDeleteButton/StyledDeleteButton";
@@ -30,7 +30,7 @@ const StyledButtonWrapper = styled.div`
   justify-content: center;
 `;
 
-export function LaneC({ boardId, lane }: LaneProps) {
+export const LaneC = ({ boardId, lane }: LaneProps) => {
   const [modalTriggered, toggleModal] = useState(false);
   const [isHovering, setHovered] = useState(false);
   const [deleteModalActive, setDeleteModal] = useState(false);
@@ -92,4 +92,4 @@ export function LaneC({ boardId, lane }: LaneProps) {
       />
     </StyledLane>
   );
-}
+};

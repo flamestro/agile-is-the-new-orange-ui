@@ -27,7 +27,7 @@ const StyledCard = styled.div`
   white-space: pre-wrap;
 `;
 
-export function CardC({ card, boardId, laneId }: CardProps) {
+export const CardC = ({ card, boardId, laneId }: CardProps) => {
   const [isHovering, setHovered] = useState(false);
   const [deleteModalActive, setDeleteModal] = useState(false);
 
@@ -64,4 +64,4 @@ export function CardC({ card, boardId, laneId }: CardProps) {
       />
     </StyledCard>
   );
-}
+};

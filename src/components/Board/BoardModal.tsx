@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyledButton } from "../StyledButton/StyledButton";
+import StyledButton from "../StyledButton/StyledButton";
 import { createBoard } from "../../App/App.gateways";
 import { StyledInput } from "../StyledInput/StyledInput";
 

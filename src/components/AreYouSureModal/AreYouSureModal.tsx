@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledButton } from "../StyledButton/StyledButton";
+import StyledButton from "../StyledButton/StyledButton";
 import StyledHeadline from "../StyledHeadline/StyledHeadline";
 
 export interface AreYouSureModalProps {
@@ -7,10 +7,10 @@ export interface AreYouSureModalProps {
   onAgree: () => void;
 }
 
-export function AreYouSureModal({
+export const AreYouSureModal = ({
   toggleModal,
   onAgree,
-}: AreYouSureModalProps) {
+}: AreYouSureModalProps) => {
   return (
     <>
       <StyledHeadline>Are you sure?</StyledHeadline>
@@ -30,4 +30,4 @@ export function AreYouSureModal({
       </StyledButton>
     </>
   );
-}
+};

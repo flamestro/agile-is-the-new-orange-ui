@@ -16,7 +16,7 @@ export const HideGlobalScrollbar = createGlobalStyle`
   }
 `;
 
-function App() {
+export const App = () => {
   const userId = "someUser";
 
   return (
@@ -25,6 +25,6 @@ function App() {
       <BoardOverview userId={userId} />
     </>
   );
-}
+};
 
 export default App;

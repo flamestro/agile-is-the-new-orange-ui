@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyledButton } from "../StyledButton/StyledButton";
+import StyledButton from "../StyledButton/StyledButton";
 import { createLane } from "../../App/App.gateways";
 import { StyledInput } from "../StyledInput/StyledInput";
 
@@ -8,7 +8,7 @@ export interface LaneModalProps {
   toggleModal: () => void;
 }
 
-export function LaneModalData({ boardId, toggleModal }: LaneModalProps) {
+export const LaneModalData = ({ boardId, toggleModal }: LaneModalProps) => {
   const [laneName, setLaneName] = useState("");
 
   const onChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -50,4 +50,4 @@ export function LaneModalData({ boardId, toggleModal }: LaneModalProps) {
       </StyledButton>
     </>
   );
-}
+};

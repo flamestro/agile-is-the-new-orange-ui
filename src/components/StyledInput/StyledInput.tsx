@@ -46,13 +46,13 @@ export interface InputProps {
   id: string;
 }
 
-export function StyledInput({
+export const StyledInput = ({
   containedText,
   onChange,
   placeholderText,
   formName,
   id,
-}: InputProps) {
+}: InputProps) => {
   return (
     <StyledFieldSet>
       <InputWithText
@@ -74,4 +74,4 @@ export function StyledInput({
       ) : null}
     </StyledFieldSet>
   );
-}
+};

@@ -4,7 +4,7 @@ import { Board } from "../../App/App.models";
 import { LaneC } from "../Lane/Lane";
 import { Modal } from "../Modal/Modal";
 import { LaneModalData } from "../Lane/LaneModal";
-import { StyledButton } from "../StyledButton/StyledButton";
+import StyledButton from "../StyledButton/StyledButton";
 import StyledHeadline from "../StyledHeadline/StyledHeadline";
 import { orange1 } from "../Colors/Colors";
 import StyledDeleteButton from "../StyledDeleteButton/StyledDeleteButton";
