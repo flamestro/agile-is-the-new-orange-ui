@@ -1,30 +1,30 @@
-import React from 'react';
-import {createGlobalStyle} from 'styled-components';
-import {BoardOverview} from "../components/BoardOverview/BoardOverview";
-import {orange_1} from "../components/Colors/Colors";
+import React from "react";
+import { createGlobalStyle } from "styled-components";
+import { BoardOverview } from "../components/BoardOverview/BoardOverview";
+import { orange1 } from "../components/Colors/Colors";
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background-color:  ${orange_1};
+    background-color:  ${orange1};
     font-family: Roboto, serif;
   }
-`
+`;
 
 export const HideGlobalScrollbar = createGlobalStyle`
   body {
     overflow: hidden;
   }
-`
+`;
 
 function App() {
-    const userId = "someUser"
+  const userId = "someUser";
 
-    return (
-        <React.Fragment>
-            <GlobalStyle/>
-            <BoardOverview userId={userId}/>
-        </React.Fragment>
-    );
+  return (
+    <>
+      <GlobalStyle />
+      <BoardOverview userId={userId} />
+    </>
+  );
 }
 
 export default App;
