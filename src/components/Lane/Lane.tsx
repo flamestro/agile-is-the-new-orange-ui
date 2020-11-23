@@ -40,8 +40,18 @@ export const LaneC = ({ boardId, lane }: LaneProps) => {
     setDeleteModal(!deleteModalActive);
   };
 
+  const [, drop] = useDrop({
+    accept: ItemTypes.CARD,
+    drop: () => ({
+      targetCardId: "",
+      targetLaneId: lane.id,
+      targetBoardId: boardId,
+    }),
+    collect: (monitor) => ({}),
+  });
+
   return (
-    <StyledLane>
+    <StyledLane ref={drop}>
       <StyledHeadline
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}

@@ -79,7 +79,7 @@ export const moveCard = async (
       sourceBoardId: boardId,
     })
   );
-  return fetch(`http://localhost:8080/board/moveCard`, {
+  return fetch(`http://localhost:8080/moveCard`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json; charset=utf-8",
