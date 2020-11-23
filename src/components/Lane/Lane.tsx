@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { useDrag, useDrop } from "react-dnd";
 import { Lane } from "../../App/App.models";
 import { CardC } from "../Card/Card";
 import { Modal } from "../Modal/Modal";
@@ -10,6 +11,7 @@ import StyledHeadline from "../StyledHeadline/StyledHeadline";
 import StyledDeleteButton from "../StyledDeleteButton/StyledDeleteButton";
 import { deleteLane } from "../../App/App.gateways";
 import { AreYouSureModal } from "../AreYouSureModal/AreYouSureModal";
+import ItemTypes from "../../App/App.dragtypes";
 
 export interface LaneProps {
   lane: Lane;
@@ -34,7 +36,6 @@ export const LaneC = ({ boardId, lane }: LaneProps) => {
   const [modalTriggered, toggleModal] = useState(false);
   const [isHovering, setHovered] = useState(false);
   const [deleteModalActive, setDeleteModal] = useState(false);
-
   const toggleDeleteModal = () => {
     setDeleteModal(!deleteModalActive);
   };

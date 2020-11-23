@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { useDrop } from "react-dnd";
 import { Board } from "../../App/App.models";
 import { LaneC } from "../Lane/Lane";
 import { Modal } from "../Modal/Modal";
@@ -10,6 +11,7 @@ import { orange1 } from "../Colors/Colors";
 import StyledDeleteButton from "../StyledDeleteButton/StyledDeleteButton";
 import { deleteBoard } from "../../App/App.gateways";
 import { AreYouSureModal } from "../AreYouSureModal/AreYouSureModal";
+import ItemTypes from "../../App/App.dragtypes";
 
 export interface BoardProps {
   board: Board;
@@ -70,15 +72,6 @@ export const BoardC = ({ board }: BoardProps) => {
           </StyledDeleteButton>
         ) : null}
       </StyledHeadline>
-      <Modal
-        childComp={
-          <LaneModalData
-            toggleModal={() => toggleModal(!modalTriggered)}
-            boardId={board.id}
-          />
-        }
-        modalTriggered={modalTriggered}
-      />
       <StyledBoard>
         {board.lanes.map((lane) => (
           <LaneC key={lane.id} boardId={board.id} lane={lane} />
@@ -105,6 +98,15 @@ export const BoardC = ({ board }: BoardProps) => {
             }}
           />
         }
+      />
+      <Modal
+        childComp={
+          <LaneModalData
+            toggleModal={() => toggleModal(!modalTriggered)}
+            boardId={board.id}
+          />
+        }
+        modalTriggered={modalTriggered}
       />
     </BoardWrapper>
   );
