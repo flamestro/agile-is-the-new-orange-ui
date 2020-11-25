@@ -24,12 +24,19 @@ const StyledLane = styled.div`
   padding: 20px;
   margin: 20px;
   background-color: ${orange1};
+  display: flex;
+  flex-direction: column;
 `;
 
 const StyledButtonWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+`;
+
+const GrowFreeSpace = styled.div`
+  flex-grow: 1;
+  width: 100%;
 `;
 
 export const LaneC = ({ boardId, lane }: LaneProps) => {
@@ -40,7 +47,17 @@ export const LaneC = ({ boardId, lane }: LaneProps) => {
     setDeleteModal(!deleteModalActive);
   };
 
-  const [, drop] = useDrop({
+  const [, dropOnButton] = useDrop({
+    accept: ItemTypes.CARD,
+    drop: () => ({
+      targetCardId: "",
+      targetLaneId: lane.id,
+      targetBoardId: boardId,
+    }),
+    collect: (monitor) => ({}),
+  });
+
+  const [, dropOnBottom] = useDrop({
     accept: ItemTypes.CARD,
     drop: () => ({
       targetCardId: "",
@@ -51,7 +68,7 @@ export const LaneC = ({ boardId, lane }: LaneProps) => {
   });
 
   return (
-    <StyledLane ref={drop}>
+    <StyledLane>
       <StyledHeadline
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
@@ -67,7 +84,7 @@ export const LaneC = ({ boardId, lane }: LaneProps) => {
         {lane.cards.map((card) => (
           <CardC key={card.id} boardId={boardId} laneId={lane.id} card={card} />
         ))}
-        <StyledButtonWrapper>
+        <StyledButtonWrapper ref={dropOnButton}>
           <StyledButton
             onClick={() => {
               toggleModal(!modalTriggered);
@@ -78,6 +95,7 @@ export const LaneC = ({ boardId, lane }: LaneProps) => {
           </StyledButton>
         </StyledButtonWrapper>
       </div>
+      <GrowFreeSpace ref={dropOnBottom} />
       <Modal
         childComp={
           <CardDataModal
