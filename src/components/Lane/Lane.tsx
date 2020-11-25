@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useDrag, useDrop } from "react-dnd";
+import { useDrop } from "react-dnd";
 import { Lane } from "../../App/App.models";
 import { CardC } from "../Card/Card";
 import { Modal } from "../Modal/Modal";
@@ -32,7 +32,12 @@ const StyledButtonWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  border-top: ${(props: DropProps) => (props.isOver ? "4px solid black" : "")};
 `;
+
+export interface DropProps {
+  isOver: boolean;
+}
 
 const GrowFreeSpace = styled.div`
   flex-grow: 1;
@@ -43,29 +48,37 @@ export const LaneC = ({ boardId, lane }: LaneProps) => {
   const [modalTriggered, toggleModal] = useState(false);
   const [isHovering, setHovered] = useState(false);
   const [deleteModalActive, setDeleteModal] = useState(false);
+  const [indicateDropOnLastCard, setIndicator] = useState(false);
   const toggleDeleteModal = () => {
     setDeleteModal(!deleteModalActive);
   };
 
-  const [, dropOnButton] = useDrop({
+  const [{ isOverButton }, dropOnButton] = useDrop({
     accept: ItemTypes.CARD,
     drop: () => ({
       targetCardId: "",
       targetLaneId: lane.id,
       targetBoardId: boardId,
     }),
-    collect: (monitor) => ({}),
+    collect: (monitor) => ({ isOverButton: monitor.isOver() }),
   });
 
-  const [, dropOnBottom] = useDrop({
+  const [{ isOverBottom }, dropOnBottom] = useDrop({
     accept: ItemTypes.CARD,
     drop: () => ({
       targetCardId: "",
       targetLaneId: lane.id,
       targetBoardId: boardId,
     }),
-    collect: (monitor) => ({}),
+    collect: (monitor) => ({
+      isOverBottom: monitor.isOver(),
+    }),
   });
+
+  useEffect(() => setIndicator(isOverButton || isOverBottom), [
+    isOverBottom,
+    isOverButton,
+  ]);
 
   return (
     <StyledLane>
@@ -84,7 +97,7 @@ export const LaneC = ({ boardId, lane }: LaneProps) => {
         {lane.cards.map((card) => (
           <CardC key={card.id} boardId={boardId} laneId={lane.id} card={card} />
         ))}
-        <StyledButtonWrapper ref={dropOnButton}>
+        <StyledButtonWrapper ref={dropOnButton} isOver={indicateDropOnLastCard}>
           <StyledButton
             onClick={() => {
               toggleModal(!modalTriggered);

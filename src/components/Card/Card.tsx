@@ -8,6 +8,7 @@ import { Modal } from "../Modal/Modal";
 import { AreYouSureModal } from "../AreYouSureModal/AreYouSureModal";
 import { orange1 } from "../Colors/Colors";
 import ItemTypes from "../../App/App.dragtypes";
+import { DropProps } from "../Lane/Lane";
 
 export interface CardProps {
   card: Card;
@@ -25,6 +26,10 @@ const StyledCard = styled.div`
   margin-bottom: 15px;
   display: flex;
   flex-direction: row;
+`;
+
+const CardWrapper = styled.div`
+  border-top: ${(props: DropProps) => (props.isOver ? "4px solid black" : "")};
 `;
 
 const CardContentWrapper = styled.div`
@@ -65,49 +70,53 @@ export const CardC = ({ card, boardId, laneId }: CardProps) => {
     },
   });
 
-  const [, drop] = useDrop({
+  const [{ isOverCard }, drop] = useDrop({
     accept: ItemTypes.CARD,
     drop: () => ({
       targetCardId: card.id,
       targetLaneId: laneId,
       targetBoardId: boardId,
     }),
-    collect: (monitor) => ({}),
+    collect: (monitor) => ({
+      isOverCard: monitor.isOver(),
+    }),
   });
   const toggleDeleteModal = () => {
     setDeleteModal(!deleteModalActive);
   };
 
   return (
-    <StyledCard
-      key={card.id}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      ref={drop}
-    >
-      <CardContentWrapper ref={drag}>
-        <span>{card.name}</span>
-        {isHovering ? (
-          <StyledDeleteButton
-            onClick={() => {
-              toggleDeleteModal();
-            }}
-          >
-            X
-          </StyledDeleteButton>
-        ) : null}
-      </CardContentWrapper>
-      <Modal
-        modalTriggered={deleteModalActive}
-        childComp={
-          <AreYouSureModal
-            toggleModal={() => {
-              toggleDeleteModal();
-            }}
-            onAgree={() => deleteCard(boardId, laneId, card.id)}
-          />
-        }
-      />
-    </StyledCard>
+    <CardWrapper isOver={isOverCard} ref={drop}>
+      <StyledCard
+        ref={drag}
+        key={card.id}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
+        <CardContentWrapper>
+          <span>{card.name}</span>
+          {isHovering ? (
+            <StyledDeleteButton
+              onClick={() => {
+                toggleDeleteModal();
+              }}
+            >
+              X
+            </StyledDeleteButton>
+          ) : null}
+        </CardContentWrapper>
+        <Modal
+          modalTriggered={deleteModalActive}
+          childComp={
+            <AreYouSureModal
+              toggleModal={() => {
+                toggleDeleteModal();
+              }}
+              onAgree={() => deleteCard(boardId, laneId, card.id)}
+            />
+          }
+        />
+      </StyledCard>
+    </CardWrapper>
   );
 };
