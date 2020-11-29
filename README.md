@@ -6,9 +6,14 @@ It is a Kanban board application.
 You can create boards, lanes, and cards with this application.
 However, you need a running [back-end](https://github.com/flamestro/AgileIsTheNewOrange) to do so.
 
-This is still work in progress, still, the main functionalities already work (C, R, and D of CRUD).
+This is still work in progress. However, the main functionalities already work (C, R, and D of CRUD).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## To be added
+- login 
+- share boards with other users
+- roles
+
+# [Create React App](https://github.com/facebook/create-react-app) documentation
 
 ## Available Scripts
 
