@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 import StyledButton from "../StyledButton/StyledButton";
 import { createLane } from "../../App/App.gateways";
 import { StyledInput } from "../StyledInput/StyledInput";
@@ -7,6 +8,10 @@ export interface LaneModalProps {
   boardId: string;
   toggleModal: () => void;
 }
+
+export const Divider = styled.div`
+  margin-top: 30px;
+`;
 
 export const LaneModalData = ({ boardId, toggleModal }: LaneModalProps) => {
   const [laneName, setLaneName] = useState("");
@@ -26,6 +31,7 @@ export const LaneModalData = ({ boardId, toggleModal }: LaneModalProps) => {
           id="LaneData"
         />
       </form>
+      <Divider />
       <StyledButton
         onClick={() => {
           createLane(boardId, laneName).then((res) => {
