@@ -67,9 +67,7 @@ export const BoardC = ({ board }: BoardProps) => {
             onClick={() => {
               toggleDeleteModal();
             }}
-          >
-            X
-          </StyledDeleteButton>
+          />
         ) : null}
       </StyledHeadline>
       <StyledBoard>

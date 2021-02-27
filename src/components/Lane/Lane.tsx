@@ -88,9 +88,7 @@ export const LaneC = ({ boardId, lane }: LaneProps) => {
       >
         {lane.name}
         {isHovering ? (
-          <StyledDeleteButton onClick={() => toggleDeleteModal()}>
-            X
-          </StyledDeleteButton>
+          <StyledDeleteButton onClick={() => toggleDeleteModal()} />
         ) : null}
       </StyledHeadline>
       <div>

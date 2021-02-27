@@ -99,9 +99,7 @@ export const CardC = ({ card, boardId, laneId }: CardProps) => {
               onClick={() => {
                 toggleDeleteModal();
               }}
-            >
-              X
-            </StyledDeleteButton>
+            />
           ) : null}
         </CardContentWrapper>
         <Modal

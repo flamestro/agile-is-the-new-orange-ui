@@ -12,6 +12,10 @@ const StyledDeleteButton = styled.div`
   justify-content: center;
   align-items: center;
   user-select: none;
+  position: relative;
+  ::after {
+    content: "X";
+  }
   &:hover {
     cursor: pointer;
   }
