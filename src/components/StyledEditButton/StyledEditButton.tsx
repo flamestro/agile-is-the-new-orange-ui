@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 const StyledEditButton = styled.div`
   font-weight: bold;
-  border-radius: 50%;
-  width: 14px;
+  border-radius: 25%;
+  width: 20px;
   height: 14px;
   font-size: 10px;
   margin-left: 10px;

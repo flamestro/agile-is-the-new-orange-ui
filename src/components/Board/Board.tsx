@@ -12,6 +12,8 @@ import StyledDeleteButton from "../StyledDeleteButton/StyledDeleteButton";
 import { deleteBoard } from "../../App/App.gateways";
 import { AreYouSureModal } from "../AreYouSureModal/AreYouSureModal";
 import ItemTypes from "../../App/App.dragtypes";
+import StyledEditButton from "../StyledEditButton/StyledEditButton";
+import { ButtonWrapper } from "../Card/Card";
 
 export interface BoardProps {
   board: Board;
@@ -63,11 +65,18 @@ export const BoardC = ({ board }: BoardProps) => {
       >
         {board.name}
         {isHovering ? (
-          <StyledDeleteButton
-            onClick={() => {
-              toggleDeleteModal();
-            }}
-          />
+          <ButtonWrapper>
+            <StyledEditButton
+              onClick={() => {
+                alert("this should allow the user to edit the name!");
+              }}
+            />
+            <StyledDeleteButton
+              onClick={() => {
+                toggleDeleteModal();
+              }}
+            />
+          </ButtonWrapper>
         ) : null}
       </StyledHeadline>
       <StyledBoard>

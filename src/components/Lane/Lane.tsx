@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useDrop } from "react-dnd";
 import { Lane } from "../../App/App.models";
-import { CardC } from "../Card/Card";
+import { ButtonWrapper, CardC } from "../Card/Card";
 import { Modal } from "../Modal/Modal";
 import { CardDataModal } from "../Card/CardModal";
 import StyledButton from "../StyledButton/StyledButton";
@@ -12,6 +12,7 @@ import StyledDeleteButton from "../StyledDeleteButton/StyledDeleteButton";
 import { deleteLane } from "../../App/App.gateways";
 import { AreYouSureModal } from "../AreYouSureModal/AreYouSureModal";
 import ItemTypes from "../../App/App.dragtypes";
+import StyledEditButton from "../StyledEditButton/StyledEditButton";
 
 export interface LaneProps {
   lane: Lane;
@@ -88,7 +89,18 @@ export const LaneC = ({ boardId, lane }: LaneProps) => {
       >
         {lane.name}
         {isHovering ? (
-          <StyledDeleteButton onClick={() => toggleDeleteModal()} />
+          <ButtonWrapper>
+            <StyledEditButton
+              onClick={() => {
+                alert("this should allow the user to edit the name!");
+              }}
+            />
+            <StyledDeleteButton
+              onClick={() => {
+                toggleDeleteModal();
+              }}
+            />
+          </ButtonWrapper>
         ) : null}
       </StyledHeadline>
       <div>
