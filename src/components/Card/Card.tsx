@@ -57,7 +57,6 @@ export const CardC = ({ card, boardId, laneId }: CardProps) => {
     end: (draggedItem, monitor) => {
       const dropResult: TargetCard = monitor.getDropResult();
       if (draggedItem && dropResult) {
-        console.log(dropResult.targetBoardId);
         moveCard(
           card.id,
           laneId,

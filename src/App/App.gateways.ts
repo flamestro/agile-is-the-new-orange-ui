@@ -69,16 +69,6 @@ export const moveCard = async (
   newLaneId: string,
   newBoardId: string
 ) => {
-  console.log(
-    JSON.stringify({
-      targetCardId: newCardId,
-      targetLaneId: newLaneId,
-      targetBoardId: newBoardId,
-      sourceCardId: cardId,
-      sourceLaneId: laneId,
-      sourceBoardId: boardId,
-    })
-  );
   return fetch(`http://localhost:8080/moveCard`, {
     method: "PUT",
     headers: {
