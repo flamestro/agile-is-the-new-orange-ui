@@ -1,5 +1,7 @@
 import React from "react";
 import { createGlobalStyle } from "styled-components";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 import { BoardOverview } from "../components/BoardOverview/BoardOverview";
 import { orange1 } from "../components/Colors/Colors";
 
@@ -22,7 +24,9 @@ export const App = () => {
   return (
     <>
       <GlobalStyle />
-      <BoardOverview userId={userId} />
+      <DndProvider backend={HTML5Backend}>
+        <BoardOverview userId={userId} />
+      </DndProvider>
     </>
   );
 };

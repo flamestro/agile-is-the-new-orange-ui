@@ -61,6 +61,34 @@ export const createCard = async (
     });
 };
 
+export const moveCard = async (
+  cardId: string,
+  laneId: string,
+  boardId: string,
+  newCardId: string,
+  newLaneId: string,
+  newBoardId: string
+) => {
+  return fetch(`http://localhost:8080/moveCard`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+    },
+    body: JSON.stringify({
+      targetCardId: newCardId,
+      targetLaneId: newLaneId,
+      targetBoardId: newBoardId,
+      sourceCardId: cardId,
+      sourceLaneId: laneId,
+      sourceBoardId: boardId,
+    }),
+  })
+    .then((res) => res.json())
+    .then((result: CardResponse) => {
+      return result;
+    });
+};
+
 export const deleteBoard = async (boardId: string) => {
   return fetch(`http://localhost:8080/board/${boardId}`, {
     method: "DELETE",

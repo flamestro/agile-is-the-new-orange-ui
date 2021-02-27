@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import StyledButton from "../StyledButton/StyledButton";
 import { createBoard } from "../../App/App.gateways";
 import { StyledInput } from "../StyledInput/StyledInput";
+import { Divider } from "../Lane/LaneModal";
 
 export interface BoardModalProps {
   userId: string;
@@ -27,6 +28,7 @@ export function BoardData({ userId, toggleModal }: BoardModalProps) {
           />
         </label>
       </form>
+      <Divider />
       <StyledButton
         onClick={() => {
           createBoard(userId, boardName).then((res) => {

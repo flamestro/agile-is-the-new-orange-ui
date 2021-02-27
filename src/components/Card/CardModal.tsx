@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { createCard } from "../../App/App.gateways";
 import StyledButton from "../StyledButton/StyledButton";
 import { StyledInput } from "../StyledInput/StyledInput";
+import { Divider } from "../Lane/LaneModal";
 
 export interface CardModalProps {
   boardId: string;
@@ -31,6 +32,7 @@ export const CardDataModal = ({
           id="CardData"
         />
       </form>
+      <Divider />
       <StyledButton
         onClick={() => {
           createCard(boardId, laneId, cardName).then((res) => {
