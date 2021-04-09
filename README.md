@@ -2,7 +2,7 @@
 
 This project is based on React ft. TypeScript.
 
-It is a Kanban board application.
+It is a Kanban board application that can be self hosted.
 You can create boards, lanes, and cards with this application.
 However, you need a running [back-end](https://github.com/flamestro/AgileIsTheNewOrange) to do so.
 
