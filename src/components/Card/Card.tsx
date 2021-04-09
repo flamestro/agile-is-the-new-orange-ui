@@ -9,12 +9,18 @@ import { AreYouSureModal } from "../AreYouSureModal/AreYouSureModal";
 import { orange1 } from "../Colors/Colors";
 import ItemTypes from "../../App/App.dragtypes";
 import { DropProps } from "../Lane/Lane";
+import StyledEditButton from "../StyledEditButton/StyledEditButton";
 
 export interface CardProps {
   card: Card;
   boardId: string;
   laneId: string;
 }
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
 
 const StyledCard = styled.div`
   border-radius: 26px;
@@ -46,6 +52,7 @@ interface TargetCard {
   targetLaneId: string;
   targetBoardId: string;
 }
+
 export const CardC = ({ card, boardId, laneId }: CardProps) => {
   const [isHovering, setHovered] = useState(false);
   const [deleteModalActive, setDeleteModal] = useState(false);
@@ -95,13 +102,18 @@ export const CardC = ({ card, boardId, laneId }: CardProps) => {
         <CardContentWrapper>
           <span>{card.name}</span>
           {isHovering ? (
-            <StyledDeleteButton
-              onClick={() => {
-                toggleDeleteModal();
-              }}
-            >
-              X
-            </StyledDeleteButton>
+            <ButtonWrapper>
+              <StyledEditButton
+                onClick={() => {
+                  alert("this should allow the user to edit the name!");
+                }}
+              />
+              <StyledDeleteButton
+                onClick={() => {
+                  toggleDeleteModal();
+                }}
+              />
+            </ButtonWrapper>
           ) : null}
         </CardContentWrapper>
         <Modal
