@@ -54,7 +54,7 @@ export const BoardOverview = ({ userId }: BoardOverviewProps) => {
       />
       <StyledHeadline>
         Boards of
-        {userId}
+        {` ${userId}`}
       </StyledHeadline>
       {boards.map((board) => (
         <BoardC key={board.id} board={board} />

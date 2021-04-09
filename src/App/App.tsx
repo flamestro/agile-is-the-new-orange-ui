@@ -19,7 +19,7 @@ export const HideGlobalScrollbar = createGlobalStyle`
 `;
 
 export const App = () => {
-  const userId = "someUser";
+  const userId = "Some Random User";
 
   return (
     <>

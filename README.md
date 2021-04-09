@@ -6,9 +6,9 @@ It is a Kanban board application.
 You can create boards, lanes, and cards with this application.
 However, you need a running [back-end](https://github.com/flamestro/AgileIsTheNewOrange) to do so.
 
-This is still work in progress. However, the main functionalities already work (C, R, and D of CRUD).
+![alt text](./doc/agile_is_the_new_orange.png)
 
-## To be added
+## To be added one day
 - login 
 - share boards with other users
 - roles
