@@ -8,7 +8,7 @@ export interface BoardModalProps {
   userId: string;
   toggleModal: () => void;
 }
-export function BoardData({ userId, toggleModal }: BoardModalProps) {
+export const BoardData = ({ userId, toggleModal }: BoardModalProps) => {
   const [boardName, setBoardName] = useState("");
 
   const onChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -53,4 +53,4 @@ export function BoardData({ userId, toggleModal }: BoardModalProps) {
       </StyledButton>
     </>
   );
-}
+};
